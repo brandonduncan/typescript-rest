@@ -1,8 +1,8 @@
 [![npm version](https://badge.fury.io/js/typescript-rest.svg)](https://badge.fury.io/js/typescript-rest)
-![Master Workflow](https://github.com/thiagobustamante/typescript-rest/workflows/Master%20Workflow/badge.svg)
-[![Coverage Status](https://codecov.io/gh/thiagobustamante/typescript-rest/branch/master/graph/badge.svg)](https://codecov.io/gh/thiagobustamante/typescript-rest)
-[![Known Vulnerabilities](https://snyk.io/test/github/thiagobustamante/typescript-rest/badge.svg?targetFile=package.json)](https://snyk.io/test/github/thiagobustamante/typescript-rest?targetFile=package.json)
-[![BCH compliance](https://bettercodehub.com/edge/badge/thiagobustamante/typescript-rest?branch=master)](https://bettercodehub.com/)
+![Master Workflow](https://github.com/brandonduncan/typescript-rest/workflows/Master%20Workflow/badge.svg)
+[![Coverage Status](https://codecov.io/gh/brandonduncan/typescript-rest/branch/master/graph/badge.svg)](https://codecov.io/gh/brandonduncan/typescript-rest)
+[![Known Vulnerabilities](https://snyk.io/test/github/brandonduncan/typescript-rest/badge.svg?targetFile=package.json)](https://snyk.io/test/github/brandonduncan/typescript-rest?targetFile=package.json)
+[![BCH compliance](https://bettercodehub.com/edge/badge/brandonduncan/typescript-rest?branch=master)](https://bettercodehub.com/)
 
 # REST Services for Typescript
 This is a lightweight annotation-based [expressjs](http://expressjs.com/) extension for typescript.
