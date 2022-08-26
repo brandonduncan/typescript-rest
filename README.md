@@ -1,4 +1,4 @@
-[![npm version](https://badge.fury.io/js/typescript-rest.svg)](https://badge.fury.io/js/typescript-rest)
+[![npm version](https://badge.fury.io/js/@brandondunc%2Ftypescript-rest.svg)](https://badge.fury.io/js/@brandondunc%2Ftypescript-rest.svg)
 ![Master Workflow](https://github.com/brandonduncan/typescript-rest/workflows/Master%20Workflow/badge.svg)
 [![Coverage Status](https://codecov.io/gh/brandonduncan/typescript-rest/branch/master/graph/badge.svg)](https://codecov.io/gh/brandonduncan/typescript-rest)
 [![Known Vulnerabilities](https://snyk.io/test/github/brandonduncan/typescript-rest/badge.svg?targetFile=package.json)](https://snyk.io/test/github/brandonduncan/typescript-rest?targetFile=package.json)
@@ -12,12 +12,16 @@ It can be used to define your APIs using decorators.
 **Table of Contents** 
 
 - [REST Services for Typescript](#)
+  - [Preface](#preface)
   - [Installation](#installation)
   - [Configuration](#configuration)
   - [Basic Usage](#basic-usage)
   - [Using with an IoC Container](#using-with-an-ioc-container)
   - [Documentation](https://github.com/thiagobustamante/typescript-rest/wiki)
   - [Boilerplate Project](#boilerplate-project)  
+
+## Preface
+This repository was forked in August 2022 to address critical security updates since the last official typescript-rest release for those still using the library.
 
 ## Installation
 
