@@ -1,5 +1,5 @@
 {
-  "name": "typescript-rest",
+  "name": "@brandonduncan/typescript-rest",
   "version": "3.0.4",
   "description": "A Library to create RESTFul APIs with Typescript",
   "author": "Thiago da Rosa de Bustamante <thiago@cruxframework.org>",
