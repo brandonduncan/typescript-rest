@@ -2,11 +2,8 @@
 
 import * as debug from 'debug';
 import * as express from 'express';
-import * as fs from 'fs-extra';
 import * as _ from 'lodash';
 import 'multer';
-import * as path from 'path';
-import * as YAML from 'yamljs';
 import {
     FileLimits, HttpMethod, ParameterConverter,
     ServiceAuthenticator, ServiceFactory
@@ -248,82 +245,6 @@ export class Server {
         }
     }
 
-    /**
-     * Creates and endpoint to publish the swagger documentation.
-     * @param router Express router
-     * @param options Options for swagger endpoint
-     */
-    public static swagger(router: express.Router, options?: SwaggerOptions) {
-        if (!Server.locked) {
-            const swaggerUi = require('swagger-ui-express');
-            options = Server.getOptions(options);
-            serverDebugger('Configuring open api documentation endpoints for options: %j', options);
-
-            const swaggerDocument: any = Server.loadSwaggerDocument(options);
-
-            if (options.host) {
-                swaggerDocument.host = options.host;
-            }
-            if (options.schemes) {
-                swaggerDocument.schemes = options.schemes;
-            }
-
-            router.get(path.posix.join('/', options.endpoint, 'json'), (req, res, next) => {
-                res.send(swaggerDocument);
-            });
-            router.get(path.posix.join('/', options.endpoint, 'yaml'), (req, res, next) => {
-                res.set('Content-Type', 'text/vnd.yaml');
-                res.send(YAML.stringify(swaggerDocument, 1000));
-            });
-            router.use(path.posix.join('/', options.endpoint), swaggerUi.serve, swaggerUi.setup(swaggerDocument, options.swaggerUiOptions));
-        }
-    }
-
     private static locked = false;
 
-    private static loadSwaggerDocument(options: SwaggerOptions) {
-        let swaggerDocument: any;
-        if (_.endsWith(options.filePath, '.yml') || _.endsWith(options.filePath, '.yaml')) {
-            swaggerDocument = YAML.load(options.filePath);
-        }
-        else {
-            swaggerDocument = fs.readJSONSync(options.filePath);
-        }
-        serverDebugger('Loaded swagger configurations: %j', swaggerDocument);
-        return swaggerDocument;
-    }
-
-    private static getOptions(options: SwaggerOptions) {
-        options = _.defaults(options, {
-            endpoint: 'api-docs',
-            filePath: './swagger.json'
-        });
-        if (_.startsWith(options.filePath, '.')) {
-            options.filePath = path.join(process.cwd(), options.filePath);
-        }
-        return options;
-    }
-}
-
-export interface SwaggerOptions {
-    /**
-     * The path to a swagger file (json or yaml)
-     */
-    filePath?: string;
-    /**
-     * Where to publish the docs
-     */
-    endpoint?: string;
-    /**
-     * The hostname of the service
-     */
-    host?: string;
-    /**
-     * The schemes used by the server
-     */
-    schemes?: Array<string>;
-    /**
-     * Options to send to swagger-ui
-     */
-    swaggerUiOptions?: object;
 }
