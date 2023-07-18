@@ -1,6 +1,6 @@
 {
   "name": "@brandondunc/typescript-rest",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "A Library to create RESTFul APIs with Typescript, forked from typscript-rest",
   "author": "Thiago da Rosa de Bustamante <thiago@cruxframework.org>",
   "keywords": [
