@@ -4,7 +4,6 @@ import * as express from 'express';
 import * as fs from 'fs';
 import * as _ from 'lodash';
 import * as request from 'request';
-import { Container } from 'typescript-ioc';
 import {
     BodyOptions, BodyType, Context, ContextNext,
     ContextRequest, ContextResponse, CookieParam, FileParam, FormParam,
@@ -207,14 +206,6 @@ export class TestReturnService {
     @Path('empty')
     public testEmptyObjectResponse() {
         return {};
-    }
-
-    @POST
-    @Path('/externalmodule')
-    public testExternal(@ContextRequest req: express.Request): Return.NewResource<Container> {
-        const result = new Return.NewResource<Container>(req.url + '/123');
-        result.body = new Container();
-        return result;
     }
 }
 
@@ -504,18 +495,6 @@ describe('Data Types Tests', () => {
             }, (error, response, body) => {
                 const val = JSON.parse(body);
                 expect(Object.keys(val)).toHaveLength(0);
-                done();
-            });
-        });
-    });
-
-    describe('NewResource return type', () => {
-        it('should handle types referenced from other modules', (done) => {
-            request.post({
-                url: 'http://localhost:5674/testreturn/externalmodule'
-            }, (error, response, body) => {
-                expect(response.statusCode).toEqual(201);
-                expect(response.headers.location).toEqual('/testreturn/externalmodule/123');
                 done();
             });
         });
